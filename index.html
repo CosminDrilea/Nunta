@@ -2,272 +2,306 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>Cosmin & Oana</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+<title>Cosmin & Oana – Nuntă 05.09.2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fdf7f0;
-    color: #3b3b3b;
-    scroll-behavior: smooth;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f7f5f2;
+  color:#333;
 }
 
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #d8cfc1;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
+/* ===== MENIU ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#fff;
+  padding:12px 0;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,.08)
 }
-nav a {
-    display: inline-block;
-    padding: 15px 25px;
-    text-decoration: none;
-    color: #3b3b3b;
-    font-weight: 600;
-    transition: 0.3s;
-}
-nav a:hover {
-    background-color: #3b3b3b;
-    color: #fff;
+nav a{
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
 }
 
-/* CONTAINER */
-.container {
-    max-width: 700px;
-    margin: auto;
-    padding: 100px 20px 40px 20px; /* top padding for navbar */
-    text-align: center;
+/* ===== SECTIUNI ===== */
+section{
+  min-height:100vh;
+  padding:120px 20px 80px;
+  text-align:center;
 }
 
-/* TITLURI */
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 10px;
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
-h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
+.fade.show{
+  opacity:1;
+  transform:none;
 }
-h3 {
-    font-size: 20px;
-    margin-top: 40px;
-    margin-bottom: 15px;
+
+/* ===== PLIC ===== */
+#plic{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 }
-.divider {
-    width: 80px;
-    height: 1px;
-    background-color: #c1b6a4;
-    margin: 20px auto 30px auto;
+#plic img{
+  width:300px;
+  cursor:pointer;
+  animation:pulse 2s infinite;
 }
-p {
-    font-size: 18px;
-    line-height: 1.6;
+#plic p{
+  margin-top:20px;
+  font-family:'Playfair Display',serif;
+  font-size:22px;
 }
-.date {
-    font-size: 22px;
-    margin: 20px 0;
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
 }
-.event {
-    margin-top: 25px;
+
+/* ===== ACASA ===== */
+#acasa{
+  background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("images/acasa.jpg") center/cover no-repeat;
+  color:#f5f5f5;
 }
-.button {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 25px;
-    border: 1px solid #3b3b3b;
-    background: none;
-    color: #3b3b3b;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none;
+#acasa h1{
+  font-family:'Great Vibes',cursive;
+  font-size:64px;
 }
-.button:hover {
-    background-color: #3b3b3b;
-    color: #fff;
+#acasa h3{
+  font-size:22px;
+  margin-top:20px;
 }
-input, select, textarea, button.submit-btn {
-    width: 90%;
-    max-width: 360px;
-    padding: 12px;
-    margin: 10px auto;
-    font-size: 16px;
-    display: block;
+#acasa .data{
+  font-weight:700;
+  font-size:26px;
+  margin-top:10px;
 }
-textarea { resize: none; }
-#thankYou {
-    display: none;
-    font-size: 20px;
-    margin-top: 30px;
-    font-weight: bold;
-    color: #3b3b3b;
+#countdown{
+  font-size:22px;
+  margin-top:40px;
 }
-.confirmare-finala {
-    margin-top: 50px;
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+/* ===== CINE ===== */
+#cine{
+  background:#000;
+  color:#fff;
 }
-.footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #777;
+.cine-nume{
+  font-family:'Great Vibes',cursive;
+  font-size:44px;
+  margin:40px 0 10px;
+}
+.cine-text{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  max-width:750px;
+  margin:0 auto 20px;
+  line-height:1.8;
+}
+.family{
+  margin-top:40px;
+  font-size:20px;
+}
+
+/* ===== UNDE ===== */
+#unde{
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url("images/unde.jpg") center/cover no-repeat;
+  color:#fff;
+}
+#unde button{
+  background:#a8c4a2;
+  border:none;
+  padding:14px 28px;
+  border-radius:30px;
+  font-size:18px;
+  margin-top:20px;
+  cursor:pointer;
+}
+
+/* ===== CONFIRMARE ===== */
+#confirmare{
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url("images/confirmare.jpg") center/cover no-repeat;
+  color:#fff;
+}
+form{
+  max-width:420px;
+  margin:0 auto;
+}
+input,select,textarea,button{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border-radius:14px;
+  border:none;
+  font-size:16px;
+}
+button{
+  background:#222;
+  color:#fff;
+  cursor:pointer;
+}
+.bg-text{
+  margin-top:40px;
+  font-size:20px;
+  opacity:.6;
+}
+.special{
+  margin-top:20px;
+  font-size:18px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  #acasa h1{font-size:48px}
 }
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav>
-<a href="#acasa">Acasă</a>
-<a href="#cine">Cine</a>
-<a href="#unde">Unde</a>
-<a href="#confirmare">Confirmare</a>
+<!-- PLIC -->
+<div id="plic">
+  <img src="images/plic.png" onclick="openInvite()">
+  <p>Apasă pentru a deschide invitația</p>
+</div>
+
+<nav style="display:none" id="menu">
+  <a href="#acasa">Acasă</a>
+  <a href="#cine">Cine</a>
+  <a href="#unde">Unde</a>
+  <a href="#confirmare">Confirmare</a>
 </nav>
 
-<div class="container" id="acasa">
-<h2>Ne căsătorim</h2>
-<h1>Cosmin & Oana</h1>
-<div class="divider"></div>
-<p>
-Cu inimile pline de bucurie,<br>
-vă invităm să fiți alături de noi<br>
-la celebrarea iubirii noastre.
-</p>
-<div class="date">
-5 septembrie 2026<br>
-Ora 20:00
-Nu uitați să fiți prezenți la momentul nostru special: dansul mirilor, care va avea loc la ora 21:30.
-Prezența voastră va face ca acest moment să fie cu adevărat magic și de neuitat pentru noi ❤️    
-</div>
-</div>
+<!-- ACASA -->
+<section id="acasa" class="fade">
+  <h1>Cosmin & Oana</h1>
+  <h3>Vă invităm să fiți alături de noi</h3>
+  <div class="data">05 Septembrie 2026 · 20:00</div>
+  <div id="countdown"></div>
+</section>
 
-<div class="container" id="cine">
-<h3>Părinți</h3>
-<p>Firița & Ionică<br>Nadia & Ion</p>
-<div class="divider"></div>
-<h3>Nași</h3>
-<p>Andreea & Gabriel Mazăre</p>
-</div>
+<!-- CINE -->
+<section id="cine" class="fade">
+  <div class="cine-nume">Ea</div>
+  <p class="cine-text">
+    <b>Oana</b><br>
+    Dragostea noastră este ca un roman nescris, iar astăzi începem primul capitol împreună.
+  </p>
 
-<div class="container" id="unde">
-<h3>Evenimentele noastre</h3>
+  <div class="cine-nume">El</div>
+  <p class="cine-text">
+    <b>Cosmin</b><br>
+    Astăzi nu marcăm doar o zi, ci începutul unei călătorii care ne va umple viețile cu iubire și fericire.
+  </p>
 
-<div class="event">
-<p><strong>Cununia religioasă</strong><br>Biserica <strong>[scrii tu]</strong></p>
-<a class="button" href="https://www.google.com/maps?q=LAT_BISERICA,LONG_BISERICA" target="_blank">Vezi locația pe hartă</a>
-</div>
+  <div class="family">
+    <b>Nașii</b><br>
+    Andreea & Gabriel<br><br>
+    <b>Părinții</b><br>
+    Firița & Ionică<br>
+    Nadia & Ion
+  </div>
+</section>
 
-<div class="event">
-<p><strong>Petrecerea</strong><br>Restaurant <strong>[Pensiunea Sara Focsani]</strong></p>
-<a class="button" href="https://www.google.com/maps/@45.6809303,27.204498,17z?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Vezi locația pe hartă</a>
-</div>
-</div>
+<!-- UNDE -->
+<section id="unde" class="fade">
+  <h2>Unde ne găsiți</h2>
+  <p>Biserica & Restaurantul</p>
+  <button onclick="window.open('LINK_GOOGLE_MAPS','_blank')">
+    Vezi locația
+  </button>
+</section>
 
-<div class="container" id="confirmare">
-<h3>Confirmare prezență</h3>
+<!-- CONFIRMARE -->
+<section id="confirmare" class="fade">
+  <h2>Confirmare prezență</h2>
 
-<form id="rsvpForm" action="https://formspree.io/f/abcdwxyz" method="POST">
-<input type="text" name="nume" placeholder="Nume și prenume" required>
+  <form>
+    <input type="text" placeholder="Nume și prenume" required>
 
-<select name="participare" id="participare" required>
-<option value="">Participare</option>
-<option value="Particip">Particip</option>
-<option value="Nu pot participa">Nu pot participa</option>
-</select>
+    <select required>
+      <option value="">Participare</option>
+      <option>Particip</option>
+      <option>Nu pot participa</option>
+    </select>
 
-<select id="total" name="total_persoane" required>
-<option value="">Număr total persoane</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
+    <select required>
+      <option value="">Număr total persoane</option>
+      <option>1</option><option>2</option><option>3</option><option>4</option>
+    </select>
 
-<p>Tip meniu</p>
+    <select>
+      <option>Meniu normal</option>
+      <option>0</option><option>1</option><option>2</option>
+    </select>
 
-<select id="normal" name="meniu_normal">
-<option value="0">Meniu normal</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
+    <select>
+      <option>Meniu vegan</option>
+      <option>0</option><option>1</option><option>2</option>
+    </select>
 
-<select id="vegan" name="meniu_vegan">
-<option value="0">Meniu vegan</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-</select>
+    <select>
+      <option>Meniu copii</option>
+      <option>0</option><option>1</option><option>2</option>
+    </select>
 
-<select id="copii" name="meniu_copii">
-<option value="0">Meniu copii</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-</select>
+    <textarea placeholder="Alergii / mențiuni speciale"></textarea>
 
-<textarea name="observatii" rows="3" placeholder="Alergii / mențiuni speciale (opțional)"></textarea>
+    <button>Trimite confirmarea</button>
+  </form>
 
-<button type="submit" class="submit-btn button">Trimite confirmarea</button>
-</form>
-
-<div id="thankYou">
-Mulțumim pentru confirmare! 💛<br>Abia așteptăm să sărbătorim împreună.
-</div>
-
-<div class="divider"></div>
-
-<p class="confirmare-finala">
-Vă rugăm să confirmați până pe data de<br><strong>20.07.2026</strong>
-</p>
-
-<div class="footer">
-Cu drag,<br>Cosmin & Oana
-</div>
-</div>
+  <div class="bg-text">Confirmare până pe data de 20.07.2026</div>
+  <div class="special">
+    Vă rugăm să fiți alături de noi la dansul mirilor – ora 21:00,
+    un moment special pe care dorim să îl trăim împreună cu voi.
+  </div>
+</section>
 
 <script>
-document.getElementById("rsvpForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const total = parseInt(document.getElementById("total").value||0);
-    const normal = parseInt(document.getElementById("normal").value||0);
-    const vegan = parseInt(document.getElementById("vegan").value||0);
-    const copii = parseInt(document.getElementById("copii").value||0);
+function openInvite(){
+  document.getElementById('plic').style.display='none';
+  document.getElementById('menu').style.display='flex';
+  document.querySelectorAll('section').forEach(s=>s.classList.add('show'));
+}
 
-    if(normal + vegan + copii !== total){
-        alert("Numărul meniurilor trebuie să fie egal cu numărul total de persoane.");
-        return;
-    }
-
-    fetch(this.action,{
-        method:"POST",
-        body:new FormData(this),
-        headers:{'Accept':'application/json'}
-    }).then(response=>{
-        if(response.ok){
-            this.style.display="none";
-            document.getElementById("thankYou").style.display="block";
-        } else {
-            alert("A apărut o eroare. Te rugăm să încerci din nou.");
-        }
-    });
-});
+/* COUNTDOWN */
+const dateNunta=new Date("2026-09-05T20:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const d=dateNunta-now;
+  if(d>0){
+    const z=Math.floor(d/(1000*60*60*24));
+    const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("countdown").innerHTML=
+      `Mai sunt ${z} zile și ${h} ore`;
+  }
+},1000);
 </script>
 
 </body>
