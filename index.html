@@ -2,55 +2,109 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>Confirmare nuntă</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmin & Oana – 05.09.2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body { font-family: Arial, sans-serif; background:#111; color:#fff; padding:40px; }
-form { max-width:400px; margin:auto; background:#222; padding:20px; border-radius:10px; }
-input, select, button { width:100%; padding:10px; margin-bottom:10px; }
-button { background:#000; color:#fff; font-weight:bold; cursor:pointer; }
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
+}
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.75);
+  padding: 12px 0;
+  z-index: 1000;
+  text-align: center;
+}
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+section {
+  min-height: 100vh;
+  padding: 300px 20px 80px;
+  text-align: center;
+}
+#confirmare {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+              url("images/confirmare.jpg") center/cover no-repeat;
+  color: #fff;
+}
+form {
+  max-width: 500px;
+  margin: 40px auto 0;
+  background: rgba(0,0,0,0.75);
+  padding: 30px;
+  border-radius: 20px;
+}
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  background: #1c1c1c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 
+<section id="confirmare">
+<h2>Confirmare prezență</h2>
+
 <form id="rsvpForm"
   action="https://docs.google.com/forms/d/e/1FAIpQLSdMmJkKLExM8gpo9Cj29OJH3U36P8CRWoMNSQrpwSRCvCtVTA/formResponse"
   method="POST"
   target="hidden_iframe"
-  onsubmit="return trimiteConfirmarea();">
+  onsubmit="return trimiteConfirmarea(event);">
 
-  <input type="text" name="entry.1111111111" id="nume" placeholder="Nume și prenume" required>
+  <!-- NUME -->
+  <input type="text" id="nume" name="entry.365609412" placeholder="Nume și prenume" required>
 
-  <select name="entry.2222222222" id="participare" required>
+  <!-- PARTICIPARE -->
+  <select id="participare" name="entry.710360335" required>
     <option value="">Participare</option>
     <option value="Particip">Particip</option>
     <option value="Nu pot participa">Nu pot participa</option>
   </select>
 
-  <select name="entry.3333333333" id="persoane" required>
+  <!-- PERSOANE -->
+  <select id="persoane" name="entry.112264034" required>
     <option value="">Număr persoane</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
+    <option value="4">4</option>
   </select>
 
-  <select name="entry.4444444444" id="meniu_normal">
-    <option value="0">Meniu normal</option>
+  <!-- MENIU NORMAL -->
+  <select id="meniu_normal" name="entry.39558959">
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
   </select>
 
-  <select name="entry.5555555555" id="meniu_copii">
-    <option value="0">Meniu copii</option>
-    <option value="0">0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select>
-
-  <select name="entry.6666666666" id="meniu_vegan">
-    <option value="0">Meniu vegan</option>
+  <!-- MENIU COPII -->
+  <select id="meniu_copii" name="entry.942542064">
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -61,19 +115,17 @@ button { background:#000; color:#fff; font-weight:bold; cursor:pointer; }
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-<script>
-function trimiteConfirmarea() {
+</section>
 
-  if (localStorage.getItem("trimis") === "da") {
-    return false;
-  }
+<script>
+function trimiteConfirmarea(e) {
+  e.preventDefault();
 
   const participare = document.getElementById("participare").value;
   const persoane = Number(document.getElementById("persoane").value || 0);
   const normal = Number(document.getElementById("meniu_normal").value || 0);
   const copii = Number(document.getElementById("meniu_copii").value || 0);
-  const vegan = Number(document.getElementById("meniu_vegan").value || 0);
-  const total = normal + copii + vegan;
+  const total = normal + copii;
 
   if (participare === "Nu pot participa" && total > 0) {
     alert("Dacă nu participați, nu selectați meniuri.");
@@ -81,18 +133,19 @@ function trimiteConfirmarea() {
   }
 
   if (participare === "Particip" && total !== persoane) {
-    alert("Total meniuri ≠ număr persoane.");
+    alert("Totalul meniurilor trebuie să fie egal cu numărul de persoane.");
     return false;
   }
 
-  localStorage.setItem("trimis", "da");
+  localStorage.setItem("rsvpTrimis", "da");
+  document.getElementById("rsvpForm").submit();
 
   document.getElementById("rsvpForm").innerHTML = `
     <h3>Vă mulțumim ❤️</h3>
     <p>Confirmarea a fost înregistrată.</p>
   `;
 
-  return true;
+  return false;
 }
 </script>
 
